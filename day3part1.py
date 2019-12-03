@@ -54,13 +54,6 @@ wireTwoCoords = GetCoordsFromPath(wireTwoPath)
 
 crossings = set(wireOneCoords).intersection(wireTwoCoords)
 
-# crossings = []
-# for coordOne in wireOneCoords:
-#     for coordTwo in wireTwoCoords:
-#         if(coordOne.x == coordTwo.x and coordOne.y == coordTwo.y):
-#             crossings.append(coordOne)
-#             print("Found intersection coord: " + str(coordOne.x) + " " + str(coordOne.y))
-
 sortedCrossings = sorted(crossings, key=lambda x: x.distance, reverse=True)
 for crossing in sortedCrossings:
     print(crossing.distance)
