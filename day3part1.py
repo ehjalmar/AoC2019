@@ -5,10 +5,10 @@ class Coord:
         self.distance = abs(self.x) + abs(self.y)
 
     def __hash__(self):
-        return hash((self.x, self.y))
+        return hash((("x" + str(self.x)), ("y" + str(self.y)), self.distance))
     
     def __eq__(self, other):
-        return self.x, self.y == other.x, other.y
+        return self.x, self.y, self.distance == other.x, other.y, other.distance
 
     def __ne__(self, other):
         return not self.__eq__(other)
@@ -27,7 +27,8 @@ def GetCoordsFromPath(path):
             currentX = currentCoord.x
             currentY = currentCoord.y
         
-        for newPos in range(distance + 1):
+        for foo in range(distance):
+            newPos = foo + 1
             if direction == "R":
                 x = currentX + newPos
                 coords.append(Coord(x, currentY))
