@@ -1,28 +1,10 @@
 import math
 
-rangeStart = "136818"
+rangeStart = 136818
 rangeEnd = 685979
 
-# Bump up chars to apply with rule "Going from left to right, the digits never decrease"
-currentChars = []
-currentChars.append("1")
-currentChars.append("3")
-currentChars.append( "6")
-currentChars.append("8")
-currentChars.append("1")
-currentChars.append("8")
-
-for currentPos in range(5):
-    if( int(currentChars[currentPos]) > int(currentChars[currentPos + 1])):
-        currentChars[currentPos + 1] = currentChars[currentPos]
-
-firstValidInt = ""
-
-for char in currentChars:
-    firstValidInt = int(str(firstValidInt) + char)
-
 validPasswords = []
-current = firstValidInt
+current = rangeStart
 while current < rangeEnd:
     isValid = True
 
@@ -39,10 +21,6 @@ while current < rangeEnd:
     if (isValid and hasAdjacent):
         validPasswords.append(current)
     current += 1
-
-# Debug
-for foo in validPasswords:
-    print(foo)
 
 print("Number of possible passwords: " + str(validPasswords.__len__()))
 print("Finished!")    
